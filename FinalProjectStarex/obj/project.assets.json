@@ -5603,11 +5603,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\Desktop\\Code Academy\\FinalProjectStarex\\FinalProjectStarex\\FinalProjectStarex.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\Desktop\\Code Academy\\Final_Web_Project_Starex_BackEnd\\FinalProjectStarex\\FinalProjectStarex.csproj",
       "projectName": "FinalProjectStarex",
-      "projectPath": "C:\\Users\\HP\\Desktop\\Code Academy\\FinalProjectStarex\\FinalProjectStarex\\FinalProjectStarex.csproj",
+      "projectPath": "C:\\Users\\HP\\Desktop\\Code Academy\\Final_Web_Project_Starex_BackEnd\\FinalProjectStarex\\FinalProjectStarex.csproj",
       "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\Desktop\\Code Academy\\FinalProjectStarex\\FinalProjectStarex\\obj\\",
+      "outputPath": "C:\\Users\\HP\\Desktop\\Code Academy\\Final_Web_Project_Starex_BackEnd\\FinalProjectStarex\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

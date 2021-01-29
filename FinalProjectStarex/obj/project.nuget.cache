@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pRS+GFUJ7LZc+D4w5t1C45Um/Zv+wpHpKEe1EU+nuYJBH151i9YRINd7kDAQ7MMaFsIbGhlH6+xHBeP1GHfkQA==",
+  "dgSpecHash": "A1s99/iZOkRJKktf/QQsGe565zjtp3OxA5Y7lUd9bvBqD27FkT/rcVTSof0d12pn0H22xMS0qf7HETYU5WWjyg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\HP\\Desktop\\Code Academy\\FinalProjectStarex\\FinalProjectStarex\\FinalProjectStarex.csproj",
+  "projectFilePath": "C:\\Users\\HP\\Desktop\\Code Academy\\Final_Web_Project_Starex_BackEnd\\FinalProjectStarex\\FinalProjectStarex.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
