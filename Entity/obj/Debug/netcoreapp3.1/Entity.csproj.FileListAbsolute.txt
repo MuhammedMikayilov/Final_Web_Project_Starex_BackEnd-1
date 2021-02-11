@@ -10,3 +10,15 @@ C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd__Repository_Architecture\En
 C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd__Repository_Architecture\Entity\bin\Debug\netcoreapp3.1\Core.dll
 C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd__Repository_Architecture\Entity\bin\Debug\netcoreapp3.1\Core.pdb
 C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd__Repository_Architecture\Entity\obj\Debug\netcoreapp3.1\Entity.csproj.CopyComplete
+C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd\Entity\bin\Debug\netcoreapp3.1\Entity.deps.json
+C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd\Entity\bin\Debug\netcoreapp3.1\Entity.dll
+C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd\Entity\bin\Debug\netcoreapp3.1\Entity.pdb
+C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd\Entity\bin\Debug\netcoreapp3.1\Core.dll
+C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd\Entity\bin\Debug\netcoreapp3.1\Core.pdb
+C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd\Entity\obj\Debug\netcoreapp3.1\Entity.csprojAssemblyReference.cache
+C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd\Entity\obj\Debug\netcoreapp3.1\Entity.AssemblyInfoInputs.cache
+C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd\Entity\obj\Debug\netcoreapp3.1\Entity.AssemblyInfo.cs
+C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd\Entity\obj\Debug\netcoreapp3.1\Entity.csproj.CoreCompileInputs.cache
+C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd\Entity\obj\Debug\netcoreapp3.1\Entity.csproj.CopyComplete
+C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd\Entity\obj\Debug\netcoreapp3.1\Entity.dll
+C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd\Entity\obj\Debug\netcoreapp3.1\Entity.pdb

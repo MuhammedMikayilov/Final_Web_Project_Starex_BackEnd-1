@@ -661,11 +661,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\Desktop\\Final_Web_Project_Starex_BackEnd__Repository_Architecture\\Entity\\Entity.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\Desktop\\Final_Web_Project_Starex_BackEnd\\Entity\\Entity.csproj",
       "projectName": "Entity",
-      "projectPath": "C:\\Users\\HP\\Desktop\\Final_Web_Project_Starex_BackEnd__Repository_Architecture\\Entity\\Entity.csproj",
+      "projectPath": "C:\\Users\\HP\\Desktop\\Final_Web_Project_Starex_BackEnd\\Entity\\Entity.csproj",
       "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\Desktop\\Final_Web_Project_Starex_BackEnd__Repository_Architecture\\Entity\\obj\\",
+      "outputPath": "C:\\Users\\HP\\Desktop\\Final_Web_Project_Starex_BackEnd\\Entity\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -685,8 +685,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\HP\\Desktop\\Final_Web_Project_Starex_BackEnd__Repository_Architecture\\Core\\Core.csproj": {
-              "projectPath": "C:\\Users\\HP\\Desktop\\Final_Web_Project_Starex_BackEnd__Repository_Architecture\\Core\\Core.csproj"
+            "C:\\Users\\HP\\Desktop\\Final_Web_Project_Starex_BackEnd\\Core\\Core.csproj": {
+              "projectPath": "C:\\Users\\HP\\Desktop\\Final_Web_Project_Starex_BackEnd\\Core\\Core.csproj"
             }
           }
         }

@@ -13,72 +13,55 @@ namespace Core.Repository.EFRepository
         where TEntity : class, IEntity, new()
         where IContext : DbContext,new()
     {
-        public Task<TEntity> Get(Expression<Func<TEntity, bool>> filter = null)
+
+        TEntity IEntityRepository<TEntity>.Get(Expression<Func<TEntity, bool>> filter)
         {
             using (var context = new IContext())
             {
-                return filter == null 
-                    ? context.Set<TEntity>().FirstOrDefaultAsync() 
-                    : context.Set<TEntity>().Where(filter).FirstOrDefaultAsync();
+                return filter == null
+                    ? context.Set<TEntity>().FirstOrDefault()
+                    : context.Set<TEntity>().Where(filter).FirstOrDefault();
             }
         }
 
-        Task<List<TEntity>> IEntityRepository<TEntity>.GetAll(Expression<Func<TEntity, bool>> filter)
+        public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
         {
             using (var context = new IContext())
             {
-                return filter == null 
-                    ? context.Set<TEntity>().ToListAsync() 
-                    : context.Set<TEntity>().Where(filter).ToListAsync();
+                return filter == null
+                    ? context.Set<TEntity>().ToList()
+                    : context.Set<TEntity>().Where(filter).ToList();
             }
         }
 
-        //public void Add(TEntity entity)
-        //{
-        //    using (var context = new IContext())
-        //    {
-        //        var addEntity = context.Entry(entity);
-        //        addEntity.State = EntityState.Added;
-        //        context.SaveChangesAsync();
-        //    }
-        //}
-        async Task IEntityRepository<TEntity>.Add(TEntity entity)
+        public void Add(TEntity entity)
         {
             using (var context = new IContext())
             {
                 var addEntity = context.Entry(entity);
                 addEntity.State = EntityState.Added;
-                await context.SaveChangesAsync();
+                context.SaveChanges();
             }
         }
-        //public void Update(TEntity entity)
-        //{
-        //    using (var context = new IContext())
-        //    {
-        //        var addEntity = context.Entry(entity);
-        //        addEntity.State = EntityState.Modified;
-        //        context.SaveChangesAsync();
-        //    }
-        //}
 
-        //public void Delete(TEntity entity)
-        //{
-        //    using (var context = new IContext())
-        //    {
-        //        var addEntity = context.Entry(entity);
-        //        addEntity.State = EntityState.Deleted;
-        //        context.SaveChangesAsync();
-        //    }
-        //}
-
-        async Task IEntityRepository<TEntity>.Update(TEntity entity)
+        public void Update(TEntity entity)
         {
-            throw new NotImplementedException();
+            using (var context = new IContext())
+            {
+                var addEntity = context.Entry(entity);
+                addEntity.State = EntityState.Modified;
+                context.SaveChanges();
+            }
         }
 
-        async Task IEntityRepository<TEntity>.Delete(TEntity entity)
+        public void Delete(TEntity entity)
         {
-            throw new NotImplementedException();
+            using (var context = new IContext())
+            {
+                var addEntity = context.Entry(entity);
+                addEntity.State = EntityState.Deleted;
+                context.SaveChanges();
+            }
         }
     }
 }
