@@ -1,6 +1,6 @@
 ﻿using Buisness.Abstract;
 using DataAccess.Abstract;
-using Entity.Entities;
+using Entity.Entities.Service;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,32 +18,27 @@ namespace Buisness.Concret
 
         public void Add(Service service)
         {
-            throw new NotImplementedException();
+            _serviceDal.Add(service);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _serviceDal.Delete(new Service { Id = id });
         }
 
         public List<Service> GetAllService()
         {
-            throw new NotImplementedException();
+            return _serviceDal.GetAll();
         }
 
-        public Task<Service> GetServiceWithId(int id)
+        Service IServiceService.GetServiceWithId(int id)
         {
-            throw new NotImplementedException();
+            return _serviceDal.Get(c => c.Id == id && !c.IsDeleted);
         }
 
         public void Update(Service service)
         {
-            throw new NotImplementedException();
-        }
-
-        Task<List<Service>> IServiceService.GetAllService()
-        {
-            throw new NotImplementedException();
+            _serviceDal.Update(service);
         }
     }
 }

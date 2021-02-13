@@ -1,3 +1,7 @@
+using Buisness.Abstract;
+using Buisness.Concret;
+using DataAccess.Abstract;
+using DataAccess.Concret;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +28,8 @@ namespace Starex
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IServiceService, ServiceManager>();
+            services.AddScoped<IServiceDal, EFServiceDal>();
             services.AddControllers();
         }
 
