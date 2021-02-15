@@ -101,6 +101,10 @@ namespace Starex.Controllers
                 {
                     item.IsDeleted = true;
                 }
+                foreach (var item in countryDb.CountryContacts)
+                {
+                    item.IsDeleted = true;
+                }
                 // SHEKIL SILMEK YAZILACAQ
                 _countryService.Delete(id);
                 return Ok();
