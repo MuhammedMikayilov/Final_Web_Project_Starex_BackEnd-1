@@ -8,7 +8,7 @@ using System.Text;
 namespace Entity.Entities.Contacts
 {
     public class CountryContact : IEntity 
-    {
+    { 
         public int Id { get; set; }
         [Required]
         public string Address { get; set; }

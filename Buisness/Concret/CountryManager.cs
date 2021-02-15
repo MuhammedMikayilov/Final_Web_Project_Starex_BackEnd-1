@@ -26,7 +26,7 @@ namespace Buisness.Concret
 
         public List<Country> GetAllCountry()
         {
-            return _countryDal.GetAll();
+            return _countryDal.GetAll(c => !c.IsDeleted);
         }
 
         public Country GetCountryWithId(int id)

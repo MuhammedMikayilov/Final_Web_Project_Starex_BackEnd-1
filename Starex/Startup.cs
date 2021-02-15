@@ -30,6 +30,12 @@ namespace Starex
         {
             services.AddScoped<IServiceService, ServiceManager>();
             services.AddScoped<IServiceDal, EFServiceDal>();
+            services.AddScoped<ICountryService, CountryManager>();
+            services.AddScoped<ICountryDal, EFCountryDal>();
+            services.AddScoped<ICountryContactService, CountryContactManager>();
+            services.AddScoped<ICountryContactDal, EFCountryContactDal>();
+            services.AddScoped<ITariffService, TariffManager>();
+            services.AddScoped<ITariffDal, EFTariffDal>();
             services.AddControllers();
         }
 
