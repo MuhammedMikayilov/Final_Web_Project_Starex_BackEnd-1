@@ -1,4 +1,4 @@
-﻿using Entity.Entities;
+﻿using Entity.Entities.Service;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,11 +8,10 @@ namespace Buisness.Abstract
 {
     public interface IServiceService
     {
-        Task<Service> GetServiceWithId(int id);
-        Task<List<Service>> GetAllService();
+        Service GetServiceWithId(int id);
+        List<Service> GetAllService();
         void Add(Service service);
         void Update(Service service);
         void Delete(int id);
-
     }
 }

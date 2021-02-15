@@ -1,4 +1,7 @@
-﻿using Entity.Entities;
+﻿using Entity.Entities.Contacts;
+using Entity.Entities.Countries;
+using Entity.Entities.Service;
+using Entity.Entities.Tariffs;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -6,7 +9,7 @@ using System.Text;
 
 namespace DataAccess.Concret
 {
-    public class AppDbContext: DbContext
+    public class AppDbContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -15,5 +18,8 @@ namespace DataAccess.Concret
         }
 
         public DbSet<Service> Services { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<Tariff> Tariffs { get; set; }
+        public DbSet<CountryContact> CountryContacts { get; set; }
     }
 }

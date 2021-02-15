@@ -30,3 +30,6 @@ C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd\Buisness\obj\Debug\netcorea
 C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd\Buisness\obj\Debug\netcoreapp3.1\Buisness.csproj.CopyComplete
 C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd\Buisness\obj\Debug\netcoreapp3.1\Buisness.dll
 C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd\Buisness\obj\Debug\netcoreapp3.1\Buisness.pdb
+C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd\Buisness\bin\Debug\netcoreapp3.1\Buisness.runtimeconfig.json
+C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd\Buisness\bin\Debug\netcoreapp3.1\Buisness.runtimeconfig.dev.json
+C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd\Buisness\obj\Debug\netcoreapp3.1\Buisness.genruntimeconfig.cache
