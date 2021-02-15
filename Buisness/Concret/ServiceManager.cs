@@ -28,12 +28,12 @@ namespace Buisness.Concret
 
         public List<Service> GetAllService()
         {
-            return _serviceDal.GetAll();
+            return _serviceDal.GetAll(s => !s.IsDeleted);
         }
 
         Service IServiceService.GetServiceWithId(int id)
         {
-            return _serviceDal.Get(c => c.Id == id && !c.IsDeleted);
+            return _serviceDal.Get(s => s.Id == id && !s.IsDeleted);
         }
 
         public void Update(Service service)

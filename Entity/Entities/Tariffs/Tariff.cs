@@ -11,7 +11,7 @@ namespace Entity.Entities.Tariffs
     {
         public int Id { get; set; }
         [Required]
-        public string Weight { get; set; } // DEYISHECEK
+        public string Weight { get; set; } 
         [Required]
         public double StartWeight { get; set; }
         [Required]

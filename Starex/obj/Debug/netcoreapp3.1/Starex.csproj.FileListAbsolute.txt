@@ -86,3 +86,5 @@ C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd\Starex\bin\Debug\netcoreapp
 C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd\Starex\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd\Starex\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd\Starex\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd\Starex\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\HP\Desktop\Final_Web_Project_Starex_BackEnd\Starex\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
