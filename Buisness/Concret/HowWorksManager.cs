@@ -1,4 +1,5 @@
 ﻿using Buisness.Abstract;
+using DataAccess.Abstract;
 using Entity.Entities.HomePages;
 using System;
 using System.Collections.Generic;
@@ -8,30 +9,38 @@ namespace Buisness.Concret
 {
     public class HowWorksManager : IHowWorksService
     {
+
+        private readonly IHowWorksDal _howWorksDal;
+
+        public HowWorksManager(IHowWorksDal howWorksDal)
+        {
+            _howWorksDal = howWorksDal;
+        }
+
         //private readonly 
         public void Add(HowWorks data)
         {
-            throw new NotImplementedException();
+            _howWorksDal.Add(data);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _howWorksDal.Delete(new HowWorks { Id = id });
         }
 
         public List<HowWorks> GetAll()
         {
-            throw new NotImplementedException();
+            return _howWorksDal.GetAll();
         }
 
         public HowWorks GetWithId(int id)
         {
-            throw new NotImplementedException();
+            return _howWorksDal.Get(a => a.Id == id);
         }
 
         public void Update(HowWorks data)
         {
-            throw new NotImplementedException();
+            _howWorksDal.Update(data);
         }
     }
 }
