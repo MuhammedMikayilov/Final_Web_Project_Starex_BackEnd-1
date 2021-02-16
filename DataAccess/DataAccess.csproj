@@ -5,8 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20210215063305_test.cs" />
-    <Compile Remove="Migrations\20210215063305_test.Designer.cs" />
+    <Compile Remove="Migrations\20210215134714_Test.cs" />
+    <Compile Remove="Migrations\20210215134714_Test.Designer.cs" />
+    <Compile Remove="Migrations\20210215200507_Test.cs" />
+    <Compile Remove="Migrations\20210215200507_Test.Designer.cs" />
+    <Compile Remove="Migrations\20210215201221_Test.cs" />
+    <Compile Remove="Migrations\20210215201221_Test.Designer.cs" />
+    <Compile Remove="Migrations\20210215203847_First.cs" />
+    <Compile Remove="Migrations\20210215203847_First.Designer.cs" />
+    <Compile Remove="Migrations\20210216051145_First.cs" />
+    <Compile Remove="Migrations\20210216051145_First.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

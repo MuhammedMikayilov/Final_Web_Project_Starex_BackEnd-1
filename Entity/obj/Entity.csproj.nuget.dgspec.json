@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\Desktop\\Final_Web_Project_Starex_BackEnd\\Entity\\Entity.csproj": {}
+    "C:\\Users\\maham\\OneDrive\\Desktop\\Github problem\\Final_Web_Project_Starex_BackEnd\\Entity\\Entity.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\Desktop\\Final_Web_Project_Starex_BackEnd\\Core\\Core.csproj": {
+    "C:\\Users\\maham\\OneDrive\\Desktop\\Github problem\\Final_Web_Project_Starex_BackEnd\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\Desktop\\Final_Web_Project_Starex_BackEnd\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\maham\\OneDrive\\Desktop\\Github problem\\Final_Web_Project_Starex_BackEnd\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\HP\\Desktop\\Final_Web_Project_Starex_BackEnd\\Core\\Core.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\Desktop\\Final_Web_Project_Starex_BackEnd\\Core\\obj\\",
+        "projectPath": "C:\\Users\\maham\\OneDrive\\Desktop\\Github problem\\Final_Web_Project_Starex_BackEnd\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\maham\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\maham\\OneDrive\\Desktop\\Github problem\\Final_Web_Project_Starex_BackEnd\\Core\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\maham\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -47,6 +44,10 @@
               "target": "Package",
               "version": "[3.1.10, )"
             },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.10, )"
+            },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -73,20 +74,17 @@
         }
       }
     },
-    "C:\\Users\\HP\\Desktop\\Final_Web_Project_Starex_BackEnd\\Entity\\Entity.csproj": {
+    "C:\\Users\\maham\\OneDrive\\Desktop\\Github problem\\Final_Web_Project_Starex_BackEnd\\Entity\\Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\Desktop\\Final_Web_Project_Starex_BackEnd\\Entity\\Entity.csproj",
+        "projectUniqueName": "C:\\Users\\maham\\OneDrive\\Desktop\\Github problem\\Final_Web_Project_Starex_BackEnd\\Entity\\Entity.csproj",
         "projectName": "Entity",
-        "projectPath": "C:\\Users\\HP\\Desktop\\Final_Web_Project_Starex_BackEnd\\Entity\\Entity.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\Desktop\\Final_Web_Project_Starex_BackEnd\\Entity\\obj\\",
+        "projectPath": "C:\\Users\\maham\\OneDrive\\Desktop\\Github problem\\Final_Web_Project_Starex_BackEnd\\Entity\\Entity.csproj",
+        "packagesPath": "C:\\Users\\maham\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\maham\\OneDrive\\Desktop\\Github problem\\Final_Web_Project_Starex_BackEnd\\Entity\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\maham\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -100,8 +98,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\HP\\Desktop\\Final_Web_Project_Starex_BackEnd\\Core\\Core.csproj": {
-                "projectPath": "C:\\Users\\HP\\Desktop\\Final_Web_Project_Starex_BackEnd\\Core\\Core.csproj"
+              "C:\\Users\\maham\\OneDrive\\Desktop\\Github problem\\Final_Web_Project_Starex_BackEnd\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\maham\\OneDrive\\Desktop\\Github problem\\Final_Web_Project_Starex_BackEnd\\Core\\Core.csproj"
               }
             }
           }
@@ -120,9 +118,7 @@
               "target": "Package",
               "version": "[3.1.10, )"
             },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
+            "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[3.1.10, )"
             }

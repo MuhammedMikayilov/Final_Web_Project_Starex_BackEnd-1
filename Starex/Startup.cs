@@ -4,15 +4,9 @@ using DataAccess.Abstract;
 using DataAccess.Concret;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Starex
 {
@@ -28,15 +22,23 @@ namespace Starex
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IServiceService, ServiceManager>();
-            services.AddScoped<IServiceDal, EFServiceDal>();
-            services.AddScoped<ICountryService, CountryManager>();
-            services.AddScoped<ICountryDal, EFCountryDal>();
-            services.AddScoped<ICountryContactService, CountryContactManager>();
-            services.AddScoped<ICountryContactDal, EFCountryContactDal>();
-            services.AddScoped<ITariffService, TariffManager>();
-            services.AddScoped<ITariffDal, EFTariffDal>();
             services.AddControllers();
+            services.AddScoped<IAboutDAL, EFAboutDal>();
+            services.AddScoped<IAboutService, AboutManager>();
+            services.AddScoped<INewsDal, EfNewsDal>();
+            services.AddScoped<INewsService, NewsManager>();
+            services.AddScoped<INewsDetailDal, EFNewsDetailDal>();
+            services.AddScoped<INewsDetailService, NewsDetailManager>();
+            services.AddScoped<IQuestionNavbarDal, EFQuestionNavbarDal>();
+            services.AddScoped<IQuestionNavbarService, QuestionNavbarManager>();
+            services.AddScoped<IQuestionDal, EFQuestionDal>();
+            services.AddScoped<IQuestionService, QuestionManager>();
+            services.AddScoped<IIntroDal, EFIntroDal>();
+            services.AddScoped<IIntroService, IntroManager>();
+            services.AddScoped<IHowWorksDal, EFHowWorksDal>();
+            services.AddScoped<IHowWorksService, HowWorksManager>();
+            services.AddScoped<IAdvantagesDal, EFAdvantagesDal>();
+            services.AddScoped<IAdvantagesService, AdvantagesManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
