@@ -15,11 +15,11 @@ namespace Starex.Controllers
     [ApiController]
     public class IntroController : ControllerBase
     {
-        private readonly IIntroService _introService;
+        private readonly IIntroService _context;
 
         public IntroController(IIntroService introService)
         {
-            _introService = introService;
+            _context = introService;
         }
 
         // GET: api/<IntroController>
@@ -28,7 +28,7 @@ namespace Starex.Controllers
         {
             try
             {
-                List<Intro> intros = _introService.GetAllIntro();
+                List<Intro> intros = _context.GetAllIntro();
                 return Ok(intros);
             }
             catch(Exception ex)
@@ -43,7 +43,7 @@ namespace Starex.Controllers
         {
             try
             {
-                Intro intro = _introService.GetIntroWithId(id);
+                Intro intro = _context.GetIntroWithId(id);
                 if (intro == null) return StatusCode(StatusCodes.Status404NotFound);
                 return Ok(intro);
             }
@@ -61,7 +61,7 @@ namespace Starex.Controllers
             try
             {
                 if (!ModelState.IsValid) return BadRequest();
-                _introService.AddIntro(intro);
+                _context.AddIntro(intro);
                 return Ok();
             }
             catch (Exception e)
@@ -76,11 +76,11 @@ namespace Starex.Controllers
         {
             try
             {
-                Intro dbIntro = _introService.GetIntroWithId(id);
+                Intro dbIntro = _context.GetIntroWithId(id);
                 if (dbIntro == null) return BadRequest();
 
                 dbIntro.Title = intro.Title;
-                _introService.UpdateIntro(dbIntro);
+                _context.UpdateIntro(dbIntro);
                 return Ok();
 
             }
@@ -96,7 +96,9 @@ namespace Starex.Controllers
         {
             try
             {
-                _introService.DeleteIntro(id);
+                Intro dbIntro = _context.GetIntroWithId(id);
+                if (dbIntro == null) return BadRequest();
+                _context.Delete(id);
                 return Ok();
             }
             catch (Exception ex)

@@ -17,6 +17,10 @@
     <Compile Remove="Migrations\20210216051145_First.Designer.cs" />
     <Compile Remove="Migrations\20210216135953_Test.cs" />
     <Compile Remove="Migrations\20210216135953_Test.Designer.cs" />
+    <Compile Remove="Migrations\20210217070631_StoreDb.cs" />
+    <Compile Remove="Migrations\20210217070631_StoreDb.Designer.cs" />
+    <Compile Remove="Migrations\20210217143501_OrderDb.cs" />
+    <Compile Remove="Migrations\20210217143501_OrderDb.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

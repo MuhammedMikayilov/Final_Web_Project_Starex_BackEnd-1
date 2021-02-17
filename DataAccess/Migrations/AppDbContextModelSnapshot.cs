@@ -210,6 +210,45 @@ namespace DataAccess.Migrations
                     b.ToTable("NewsDetail");
                 });
 
+            modelBuilder.Entity("Entity.Entities.Orders.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("CargoCountry")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Color")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Count")
+                        .HasColumnType("float");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Link")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Size")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Total")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Orders");
+                });
+
             modelBuilder.Entity("Entity.Entities.Questions.Question", b =>
                 {
                     b.Property<int>("Id")
@@ -280,6 +319,35 @@ namespace DataAccess.Migrations
                     b.ToTable("Services");
                 });
 
+            modelBuilder.Entity("Entity.Entities.Stores.Store", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CountryId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Link")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Photo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.ToTable("Stores");
+                });
+
             modelBuilder.Entity("Entity.Entities.Tariffs.Tariff", b =>
                 {
                     b.Property<int>("Id")
@@ -339,6 +407,15 @@ namespace DataAccess.Migrations
                     b.HasOne("Entity.Entities.Questions.QuestionNavbar", "QuestionNavbar")
                         .WithMany("Questions")
                         .HasForeignKey("QuestionNavbarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Entity.Entities.Stores.Store", b =>
+                {
+                    b.HasOne("Entity.Entities.Countries.Country", "Country")
+                        .WithMany("Stores")
+                        .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

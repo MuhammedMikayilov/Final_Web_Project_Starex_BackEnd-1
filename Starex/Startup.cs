@@ -39,6 +39,18 @@ namespace Starex
             services.AddScoped<IHowWorksService, HowWorksManager>();
             services.AddScoped<IAdvantagesDal, EFAdvantagesDal>();
             services.AddScoped<IAdvantagesService, AdvantagesManager>();
+            services.AddScoped<IStoreDal, EFStoreDal>();
+            services.AddScoped<IStoreService, StoreManager>();
+            services.AddScoped<IServiceService, ServiceManager>();
+            services.AddScoped<IServiceDal, EFServiceDal>();
+            services.AddScoped<ICountryService, CountryManager>();
+            services.AddScoped<ICountryDal, EFCountryDal>();
+            services.AddScoped<ICountryContactService, CountryContactManager>();
+            services.AddScoped<ICountryContactDal, EFCountryContactDal>();
+            services.AddScoped<ITariffService, TariffManager>();
+            services.AddScoped<ITariffDal, EFTariffDal>();
+            services.AddScoped<IOrderService, OrderManager>();
+            services.AddScoped<IOrderDal, EFOrderDal>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

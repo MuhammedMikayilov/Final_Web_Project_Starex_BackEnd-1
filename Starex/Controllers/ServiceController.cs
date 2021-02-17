@@ -15,19 +15,19 @@ namespace Starex.Controllers
     [ApiController]
     public class ServiceController : ControllerBase
     {
-        private readonly IServiceService _serviceContext;
+        private readonly IServiceService _context;
         
         public ServiceController(IServiceService serviceContext)
         {
-            _serviceContext = serviceContext;
+            _context = serviceContext;
         }
         // GET: api/<ServiceController>
         [HttpGet]
-        public IActionResult Get()
+        public ActionResult<List<Service>> Get()
         {
             try
             {
-                List<Service> services = _serviceContext.GetAllService();
+                List<Service> services = _context.GetAllService();
                 return Ok(services);
             }
             catch (Exception e)
@@ -38,11 +38,11 @@ namespace Starex.Controllers
 
         // GET api/<ServiceController>/5
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public ActionResult<Service> Get(int id)
         {
             try
             {
-                Service service = _serviceContext.GetServiceWithId(id);
+                Service service = _context.GetServiceWithId(id);
                 if (service == null) return StatusCode(StatusCodes.Status404NotFound);
                 return Ok(service);
             }
@@ -54,13 +54,13 @@ namespace Starex.Controllers
 
         // POST api/<ServiceController>
         [HttpPost]
-        public IActionResult Create([FromBody] Service service)
+        public ActionResult Create([FromBody] Service service)
         {
             try
             {
                 if (!ModelState.IsValid) return BadRequest();
 
-                _serviceContext.Add(service);
+                _context.Add(service);
                 return Ok();
             }
             catch (Exception e)
@@ -71,17 +71,17 @@ namespace Starex.Controllers
 
         // PUT api/<ServiceController>/5
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] Service service)
+        public ActionResult Update(int id, [FromBody] Service service)
         {
             try
             {
-                Service serviceDb = _serviceContext.GetServiceWithId(id);
+                Service serviceDb = _context.GetServiceWithId(id);
                 if (serviceDb == null) return StatusCode(StatusCodes.Status404NotFound);
 
                 serviceDb.Description = service.Description;
                 serviceDb.Title = service.Title;
                 serviceDb.VideoLink = service.VideoLink;
-                _serviceContext.Update(serviceDb);
+                _context.Update(serviceDb);
                 return Ok();
             }
             catch (Exception e)
@@ -93,14 +93,14 @@ namespace Starex.Controllers
 
         // DELETE api/<ServiceController>/5
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public ActionResult Delete(int id)
         {
             try
             {
-                Service serviceDb = _serviceContext.GetServiceWithId(id);
+                Service serviceDb = _context.GetServiceWithId(id);
                 if (serviceDb == null) return StatusCode(StatusCodes.Status404NotFound);
                 serviceDb.IsDeleted = true;
-                _serviceContext.Delete(id);
+                _context.Update(serviceDb);
                 return Ok();
             }
             catch (Exception e)

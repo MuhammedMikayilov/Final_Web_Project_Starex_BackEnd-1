@@ -11,6 +11,6 @@ namespace Buisness.Abstract
         List<Intro> GetAllIntro();
         void AddIntro(Intro data);
         void UpdateIntro(Intro data);
-        void DeleteIntro(int id);
+        void Delete(int id);
     }
 }

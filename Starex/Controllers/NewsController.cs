@@ -95,7 +95,11 @@ namespace Starex.Controllers
         {
             try
             {
-                _context.Delete(id);
+                News dbNews = _context.GetWithId(id);
+                if (dbNews == null) return BadRequest();
+                dbNews.IsDeleted = true;
+                dbNews.NewsDetail.IsDeleted = true;
+                _context.Update(dbNews);
                 return Ok();
             }
             catch (Exception ex)

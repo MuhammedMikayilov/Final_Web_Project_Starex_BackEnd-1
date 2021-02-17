@@ -15,11 +15,11 @@ namespace Starex.Controllers
     [ApiController]
     public class HowWorksController : ControllerBase
     {
-        private readonly IHowWorksService _howWorks;
+        private readonly IHowWorksService _context;
 
         public HowWorksController(IHowWorksService howWorks)
         {
-            _howWorks = howWorks;
+            _context = howWorks;
         }
 
         // GET: api/<HowWorksController>
@@ -28,7 +28,7 @@ namespace Starex.Controllers
         {
             try
             {
-                List<HowWorks> howWorks = _howWorks.GetAll();
+                List<HowWorks> howWorks = _context.GetAll();
                 return Ok(howWorks);
             }
             catch (Exception ex)
@@ -44,7 +44,7 @@ namespace Starex.Controllers
         {
             try
             {
-                HowWorks howWorks = _howWorks.GetWithId(id);
+                HowWorks howWorks = _context.GetWithId(id);
                 if (howWorks == null) return StatusCode(StatusCodes.Status404NotFound);
                 return Ok(howWorks);
             }
@@ -62,7 +62,7 @@ namespace Starex.Controllers
             try
             {
                 if (!ModelState.IsValid) return BadRequest();
-                _howWorks.Add(howWorks);
+                _context.Add(howWorks);
                 return Ok();
             }
             catch (Exception e)
@@ -77,14 +77,14 @@ namespace Starex.Controllers
         {
             try
             {
-                HowWorks dbWorks = _howWorks.GetWithId(id);
+                HowWorks dbWorks = _context.GetWithId(id);
                 if (dbWorks == null) return BadRequest();
 
                 dbWorks.Icon = howWorks.Icon;
                 dbWorks.Title = howWorks.Title;
                 dbWorks.Description = howWorks.Description;
 
-                _howWorks.Update(dbWorks);
+                _context.Update(dbWorks);
                 return Ok();
 
             }
@@ -100,7 +100,10 @@ namespace Starex.Controllers
         {
             try
             {
-                _howWorks.Delete(id);
+                HowWorks dbHowWorks = _context.GetWithId(id);
+                if (dbHowWorks == null) return BadRequest();
+                
+                _context.Delete(id);
                 return Ok();
             }
             catch (Exception e)

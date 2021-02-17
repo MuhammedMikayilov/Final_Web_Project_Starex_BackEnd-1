@@ -16,11 +16,11 @@ namespace Starex.Controllers
     public class AdvantagesController : ControllerBase
     {
 
-        private readonly IAdvantagesService _advantagesService;
+        private readonly IAdvantagesService _context;
 
         public AdvantagesController(IAdvantagesService advantagesService)
         {
-            _advantagesService = advantagesService;
+            _context = advantagesService;
         }
 
         // GET: api/<AdvantagesController>
@@ -29,7 +29,7 @@ namespace Starex.Controllers
         {
             try
             {
-                List<Advantages> advantages = _advantagesService.GetAll();
+                List<Advantages> advantages = _context.GetAll();
                 return Ok(advantages);
             }
             catch (Exception ex)
@@ -45,7 +45,7 @@ namespace Starex.Controllers
         {
             try
             {
-                Advantages advantages = _advantagesService.GetWithId(id);
+                Advantages advantages = _context.GetWithId(id);
                 if (advantages == null) return StatusCode(StatusCodes.Status404NotFound);
                 return Ok(advantages);
             }
@@ -63,7 +63,7 @@ namespace Starex.Controllers
             try
             {
                 if (!ModelState.IsValid) return BadRequest();
-                _advantagesService.Add(advantages);
+                _context.Add(advantages);
                 return Ok();
             }
             catch (Exception e)
@@ -78,14 +78,14 @@ namespace Starex.Controllers
         {
             try
             {
-                Advantages dbAdvatages = _advantagesService.GetWithId(id);
+                Advantages dbAdvatages = _context.GetWithId(id);
                 if (dbAdvatages == null) return BadRequest();
 
                 dbAdvatages.Icon = advantages.Icon;
                 dbAdvatages.Title = advantages.Title;
                 dbAdvatages.Description = advantages.Description;
 
-                _advantagesService.Update(dbAdvatages);
+                _context.Update(dbAdvatages);
                 return Ok();
 
             }
@@ -101,7 +101,10 @@ namespace Starex.Controllers
         {
             try
             {
-                _advantagesService.Delete(id);
+                Advantages dbAdvantages = _context.GetWithId(id);
+                if (dbAdvantages == null) return BadRequest();
+                dbAdvantages.IsDeleted = true;
+                _context.Update(dbAdvantages);
                 return Ok();
             }
             catch (Exception e)

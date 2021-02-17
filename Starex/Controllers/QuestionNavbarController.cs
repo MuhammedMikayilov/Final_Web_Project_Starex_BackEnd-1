@@ -95,11 +95,13 @@ namespace Starex.Controllers
             QuestionNavbar dbQuestion = _context.GetWithId(id);
             try
             {
+                if (dbQuestion == null) return BadRequest();
+                dbQuestion.IsDeleted = true;
                 foreach (Question item in dbQuestion.Questions)
                 {
                     item.IsDelete = true;
                 }
-                _context.Delete(id);
+                _context.Update(dbQuestion);
                 return Ok();
             }
             catch (Exception ex)

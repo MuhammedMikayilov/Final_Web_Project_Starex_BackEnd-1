@@ -96,6 +96,8 @@ namespace Starex.Controllers
         {
             try
             {
+                About dbAbout = _context.GetWithId(id);
+                if (dbAbout == null) return BadRequest();
                 _context.Delete(id);
                 return Ok();
             }

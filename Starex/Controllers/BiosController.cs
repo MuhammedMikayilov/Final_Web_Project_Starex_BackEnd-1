@@ -1,11 +1,10 @@
 ﻿using Buisness.Abstract;
 using Entity.Entities.Bios;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -16,11 +15,13 @@ namespace Starex.Controllers
     public class BiosController : ControllerBase
     {
 
-        private readonly IBioService _bioService;
+        private readonly IBioService _context;
+        private readonly IWebHostEnvironment _env;
 
-        public BiosController(IBioService bioService)
+        public BiosController(IBioService bioService, IWebHostEnvironment env)
         {
-            _bioService = bioService;
+            _context = bioService;
+            _env = env;
         }
         // GET: api/<BiosController>
         [HttpGet]
@@ -28,7 +29,7 @@ namespace Starex.Controllers
         {
             try
             {
-                List<Bio> bio = _bioService.GetAll();
+                List<Bio> bio = _context.GetAll();
                 return Ok(bio);
             }
             catch (Exception ex)
@@ -43,7 +44,7 @@ namespace Starex.Controllers
         {
             try
             {
-                Bio bio = _bioService.GetWithId(id);
+                Bio bio = _context.GetWithId(id);
                 if (bio == null) return StatusCode(StatusCodes.Status404NotFound);
                 return Ok(bio);
             }
@@ -60,7 +61,7 @@ namespace Starex.Controllers
             try
             {
                 if (!ModelState.IsValid) return BadRequest();
-                _bioService.Add(bio);
+                _context.Add(bio);
                 return Ok();
             }
             catch (Exception e)
@@ -75,7 +76,7 @@ namespace Starex.Controllers
         {
             try
             {
-                Bio dbBio = _bioService.GetWithId(id);
+                Bio dbBio = _context.GetWithId(id);
                 if (dbBio == null) return BadRequest();
 
                 dbBio.Address = bio.Address;
@@ -83,6 +84,10 @@ namespace Starex.Controllers
                 dbBio.WorkTime = bio.WorkTime;
 
                 //Will be image
+                if (bio.PhotoHeader == null)
+                {
+                    return BadRequest();
+                }
 
                 return Ok();
 
@@ -99,7 +104,9 @@ namespace Starex.Controllers
         {
             try
             {
-                _bioService.Delete(id);
+                Bio dbBio = _context.GetWithId(id);
+                if (dbBio == null) return BadRequest();
+                _context.Delete(id);
                 return Ok();
             }
             catch (Exception e)

@@ -15,25 +15,25 @@ namespace Starex.Controllers
     [ApiController]
     public class QuestionController : ControllerBase
     {
-        private readonly IQuestionService _questionService;
+        private readonly IQuestionService _context;
 
         public QuestionController(IQuestionService questionService)
         {
-            _questionService = questionService;
+            _context = questionService;
         }
 
         // GET: api/<QuestionController>
         [HttpGet]
         public ActionResult<List<Question>> Get()
         {
-            return _questionService.GetAll();
+            return _context.GetAll();
         }
 
         // GET api/<QuestionController>/5
         [HttpGet("{id}")]
         public ActionResult<Question> Get(int id)
         {
-            return _questionService.GetWithId(id);
+            return _context.GetWithId(id);
         }
 
         // POST api/<QuestionController>
@@ -43,7 +43,7 @@ namespace Starex.Controllers
             try
             {
                 if (!ModelState.IsValid) return BadRequest();
-                _questionService.Add(question);
+                _context.Add(question);
                 return Ok();
             }
             catch (Exception ex)
@@ -58,10 +58,10 @@ namespace Starex.Controllers
         {
             try
             {
-                Question dbQuestion = _questionService.GetWithId(id);
+                Question dbQuestion = _context.GetWithId(id);
                 if (dbQuestion == null) return BadRequest();
 
-                _questionService.Update(dbQuestion);
+                _context.Update(dbQuestion);
                 return Ok();
             }
             catch (Exception ex)
@@ -76,7 +76,11 @@ namespace Starex.Controllers
         {
             try
             {
-                _questionService.Delete(id);
+                Question dbQuestion = _context.GetWithId(id);
+                if (dbQuestion == null) return BadRequest();
+                dbQuestion.IsDelete = true;
+
+                _context.Update(dbQuestion);
                 return Ok();
             }
             catch (Exception ex)

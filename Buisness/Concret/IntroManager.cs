@@ -30,7 +30,7 @@ namespace Buisness.Concret
             _introDal.Add(data);
         }
 
-        public void DeleteIntro(int id)
+        public void Delete(int id)
         {
             _introDal.Delete(new Intro { Id = id });
         }
