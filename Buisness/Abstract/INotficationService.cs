@@ -2,15 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Buisness.Abstract
 {
     public interface INotficationService
     {
-        Notfication GetWithId(int id);
-        List<Notfication> GetAll();
-        void Add(Notfication data);
-        void Update(Notfication data);
-        void Delete(int id);
+        Task<Notfication> GetWithId(int id);
+        Task<List<Notfication>> GetAll();
+        Task Add(Notfication data);
+        Task Update(Notfication data);
+        Task Delete(int id);
     }
 }

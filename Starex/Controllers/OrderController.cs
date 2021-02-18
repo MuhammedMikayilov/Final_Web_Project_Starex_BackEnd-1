@@ -24,11 +24,11 @@ namespace Starex.Controllers
 
         // GET: api/<OrderController>
         [HttpGet]
-        public ActionResult<List<Order>> Get()
+        public async Task<ActionResult<List<Order>>> Get()
         {
             try
             {
-                List<Order> orders = _context.GetAll();
+                List<Order> orders = await _context.GetAll();
                 return Ok(orders);
             }
             catch (Exception ex)
@@ -39,11 +39,11 @@ namespace Starex.Controllers
 
         // GET api/<OrderController>/5
         [HttpGet("{id}")]
-        public ActionResult<Order> Get(int id)
+        public async Task<ActionResult<Order>> Get(int id)
         {
             try
             {
-                Order order = _context.GetWithId(id);
+                Order order = await _context.GetWithId(id);
                 if (order == null) return StatusCode(StatusCodes.Status404NotFound);
                 return Ok(order);
             }
@@ -55,12 +55,12 @@ namespace Starex.Controllers
 
         // POST api/<OrderController>
         [HttpPost]
-        public ActionResult Post([FromBody] Order order)
+        public async Task<ActionResult> Post([FromBody] Order order)
         {
             try
             {
                 if (!ModelState.IsValid) return BadRequest();
-                _context.Add(order);
+                await _context.Add(order);
                 return Ok();
             }
             catch (Exception e)
@@ -71,11 +71,11 @@ namespace Starex.Controllers
 
         // PUT api/<OrderController>/5
         [HttpPut("{id}")]
-        public ActionResult Put(int id, [FromBody] Order order)
+        public async Task<ActionResult> Put(int id, [FromBody] Order order)
         {
             try
             {
-                Order dbOrder = _context.GetWithId(id);
+                Order dbOrder = await _context.GetWithId(id);
                 if (dbOrder == null) return BadRequest();
 
                 dbOrder.CargoCountry = order.CargoCountry;
@@ -87,7 +87,7 @@ namespace Starex.Controllers
                 dbOrder.Size = order.Size;
                 dbOrder.Total = order.Total;
 
-                _context.Update(dbOrder);
+                await _context.Update(dbOrder);
 
                 return Ok();
 
@@ -100,14 +100,14 @@ namespace Starex.Controllers
 
         // DELETE api/<OrderController>/5
         [HttpDelete("{id}")]
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
             try
             {
-                Order dbOrder = _context.GetWithId(id);
+                Order dbOrder = await _context.GetWithId(id);
                 if (dbOrder == null) return BadRequest();
                 dbOrder.IsDeleted = true;
-                _context.Update(dbOrder);
+                await _context.Update(dbOrder);
                 return Ok();
             }
             catch (Exception e)

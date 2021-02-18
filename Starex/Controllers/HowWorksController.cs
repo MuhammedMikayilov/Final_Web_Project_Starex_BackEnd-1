@@ -24,11 +24,11 @@ namespace Starex.Controllers
 
         // GET: api/<HowWorksController>
         [HttpGet]
-        public ActionResult<List<HowWorks>> Get()
+        public async Task<ActionResult<List<HowWorks>>> Get()
         {
             try
             {
-                List<HowWorks> howWorks = _context.GetAll();
+                List<HowWorks> howWorks = await _context.GetAll();
                 return Ok(howWorks);
             }
             catch (Exception ex)
@@ -40,11 +40,11 @@ namespace Starex.Controllers
 
         // GET api/<HowWorksController>/5
         [HttpGet("{id}")]
-        public ActionResult<HowWorks> Get(int id)
+        public async Task<ActionResult<HowWorks>> Get(int id)
         {
             try
             {
-                HowWorks howWorks = _context.GetWithId(id);
+                HowWorks howWorks = await _context.GetWithId(id);
                 if (howWorks == null) return StatusCode(StatusCodes.Status404NotFound);
                 return Ok(howWorks);
             }
@@ -57,12 +57,12 @@ namespace Starex.Controllers
 
         // POST api/<HowWorksController>
         [HttpPost]
-        public ActionResult Post([FromBody] HowWorks howWorks)
+        public async Task<ActionResult> Post([FromBody] HowWorks howWorks)
         {
             try
             {
                 if (!ModelState.IsValid) return BadRequest();
-                _context.Add(howWorks);
+                await _context.Add(howWorks);
                 return Ok();
             }
             catch (Exception e)
@@ -73,18 +73,18 @@ namespace Starex.Controllers
 
         // PUT api/<HowWorksController>/5
         [HttpPut("{id}")]
-        public ActionResult Put(int id, [FromBody] HowWorks howWorks)
+        public async Task<ActionResult> Put(int id, [FromBody] HowWorks howWorks)
         {
             try
             {
-                HowWorks dbWorks = _context.GetWithId(id);
+                HowWorks dbWorks = await _context.GetWithId(id);
                 if (dbWorks == null) return BadRequest();
 
                 dbWorks.Icon = howWorks.Icon;
                 dbWorks.Title = howWorks.Title;
                 dbWorks.Description = howWorks.Description;
 
-                _context.Update(dbWorks);
+                await _context.Update(dbWorks);
                 return Ok();
 
             }
@@ -96,14 +96,14 @@ namespace Starex.Controllers
 
         // DELETE api/<HowWorksController>/5
         [HttpDelete("{id}")]
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
             try
             {
-                HowWorks dbHowWorks = _context.GetWithId(id);
+                HowWorks dbHowWorks = await _context.GetWithId(id);
                 if (dbHowWorks == null) return BadRequest();
-                
-                _context.Delete(id);
+
+                await _context.Delete(id);
                 return Ok();
             }
             catch (Exception e)

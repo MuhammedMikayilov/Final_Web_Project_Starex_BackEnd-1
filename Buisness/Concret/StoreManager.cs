@@ -4,6 +4,7 @@ using Entity.Entities.Stores;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Buisness.Concret
 {
@@ -15,29 +16,30 @@ namespace Buisness.Concret
         {
             _storeDal = storeDal;
         }
-        public void Add(Store data)
+
+        async Task IStoreService.Add(Store data)
         {
-            _storeDal.Add(data);
+            await _storeDal.Add(data);
         }
 
-        public void Delete(int id)
+        async Task IStoreService.Delete(int id)
         {
-            _storeDal.Delete(new Store { Id = id });
+            await _storeDal.Delete(new Store { Id = id });
         }
 
-        public List<Store> GetAll()
+        public async Task<List<Store>> GetAll()
         {
-            return _storeDal.GetAll(s=>!s.IsDeleted);
+            return await _storeDal.GetAll(s => !s.IsDeleted);
         }
 
-        public Store GetWithId(int id)
+        public async Task<Store> GetWithId(int id)
         {
-            return _storeDal.Get(s=>s.Id == id && s.IsDeleted);
+            return await _storeDal.Get(s => s.Id == id && s.IsDeleted);
         }
 
-        public void Update(Store data)
+        async Task IStoreService.Update(Store data)
         {
-            _storeDal.Update(data);
+            await _storeDal.Update(data);
         }
     }
 }

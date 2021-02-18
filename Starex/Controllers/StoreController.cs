@@ -25,11 +25,11 @@ namespace Starex.Controllers
 
         // GET: api/<StoreController>
         [HttpGet]
-        public ActionResult<List<Store>> Get()
+        public async Task<ActionResult<List<Store>>> Get()
         {
             try
             {
-                List<Store> stores = _context.GetAll();
+                List<Store> stores = await _context.GetAll();
                 return Ok(stores);
             }
             catch (Exception ex)
@@ -40,11 +40,11 @@ namespace Starex.Controllers
 
         // GET api/<StoreController>/5
         [HttpGet("{id}")]
-        public ActionResult<Store> Get(int id)
+        public async Task<ActionResult<Store>> Get(int id)
         {
             try
             {
-                Store store = _context.GetWithId(id);
+                Store store = await _context.GetWithId(id);
                 if (store == null) return StatusCode(StatusCodes.Status404NotFound);
                 return Ok(store);
             }
@@ -57,13 +57,13 @@ namespace Starex.Controllers
 
         // POST api/<StoreController>
         [HttpPost]
-        public ActionResult Post([FromBody] Store store)
+        public async Task<ActionResult> Post([FromBody] Store store)
         {
             try
             {
                 if (!ModelState.IsValid) return BadRequest();
 
-                _context.Add(store);
+                await _context.Add(store);
 
                 return Ok();
             }
@@ -75,11 +75,11 @@ namespace Starex.Controllers
 
         // PUT api/<StoreController>/5
         [HttpPut("{id}")]
-        public ActionResult Put(int id, [FromBody] Store store)
+        public async Task<ActionResult> Put(int id, [FromBody] Store store)
         {
             try
             {
-                Store dbStore = _context.GetWithId(id);
+                Store dbStore = await _context.GetWithId(id);
                 if (dbStore == null) return BadRequest();
 
                 dbStore.Link = store.Link;
@@ -88,7 +88,7 @@ namespace Starex.Controllers
 
                 //will be image
 
-                _context.Update(dbStore);
+                await _context.Update(dbStore);
                 return Ok();
 
             }
@@ -100,15 +100,15 @@ namespace Starex.Controllers
 
         // DELETE api/<StoreController>/5
         [HttpDelete("{id}")]
-        public ActionResult Delete(int id, [FromBody] Store store)
+        public async Task<ActionResult> Delete(int id, [FromBody] Store store)
         {
             try
             {
-                Store dbStore = _context.GetWithId(id);
+                Store dbStore = await _context.GetWithId(id);
                 if (dbStore == null) return BadRequest();
 
                 dbStore.IsDeleted = true;
-                _context.Update(dbStore);
+                await _context.Update(dbStore);
 
                 return Ok();
             }

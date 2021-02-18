@@ -2,15 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Buisness.Abstract
 {
     public interface IStoreService
     {
-        Store GetWithId(int id);
-        List<Store> GetAll();
-        void Add(Store data);
-        void Update(Store data);
-        void Delete(int id);
+        Task<Store> GetWithId(int id);
+        Task<List<Store>> GetAll();
+        Task Add(Store data);
+        Task Update(Store data);
+        Task Delete(int id);
     }
 }

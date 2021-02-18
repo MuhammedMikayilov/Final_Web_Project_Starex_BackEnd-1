@@ -4,6 +4,7 @@ using Entity.Entities.Bios;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Buisness.Concret
 {
@@ -16,30 +17,29 @@ namespace Buisness.Concret
         {
             _bioDal = bioDal;
         }
-
-        public void Add(Bio data)
+        async Task IBioService.Add(Bio data)
         {
-            _bioDal.Add(data);
+            await _bioDal.Add(data);
         }
 
-        public void Delete(int id)
+        async Task IBioService.Delete(int id)
         {
-            _bioDal.Delete(new Bio { Id = id });
+            await _bioDal.Delete(new Bio { Id = id });
         }
 
-        public List<Bio> GetAll()
+        public async Task<List<Bio>> GetAll()
         {
-            return _bioDal.GetAll();
+            return await _bioDal.GetAll();
         }
 
-        public Bio GetWithId(int id)
+        public async Task<Bio> GetWithId(int id)
         {
-            return _bioDal.Get(b=>b.Id == id);
+            return await _bioDal.Get(b => b.Id == id);
         }
 
-        public void Update(Bio data)
+        async Task IBioService.Update(Bio data)
         {
-            _bioDal.Update(data);
+            await _bioDal.Update(data);
         }
     }
 }

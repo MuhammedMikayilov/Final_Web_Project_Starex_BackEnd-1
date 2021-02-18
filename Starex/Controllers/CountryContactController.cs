@@ -22,11 +22,11 @@ namespace Starex.Controllers
         }
         // GET: api/<CountryContactController>
         [HttpGet]
-        public ActionResult<List<CountryContact>> Get()
+        public async Task<ActionResult<List<CountryContact>>> Get()
         {
             try
             {
-                List<CountryContact> contact = _context.GetAllContact();
+                List<CountryContact> contact = await _context.GetAll();
                 return Ok(contact);
             }
             catch (Exception e)
@@ -37,11 +37,11 @@ namespace Starex.Controllers
 
         // GET api/<CountryContactController>/5
         [HttpGet("{id}")]
-        public ActionResult<CountryContact> Get(int id)
+        public async Task<ActionResult<CountryContact>> Get(int id)
         {
             try
             {
-                CountryContact contact = _context.GetContactWithId(id);
+                CountryContact contact = await _context.GetWithId(id);
                 if (contact == null) return StatusCode(StatusCodes.Status404NotFound);
                 return Ok(contact);
             }
@@ -53,12 +53,12 @@ namespace Starex.Controllers
 
         // POST api/<CountryContactController>
         [HttpPost]
-        public ActionResult Create([FromBody] CountryContact contact)
+        public async Task<ActionResult> Create([FromBody] CountryContact contact)
         {
             try
             {
                 if (!ModelState.IsValid) return BadRequest();
-                _context.Add(contact);
+                await _context.Add(contact);
                 return Ok();
             }
             catch (Exception e)
@@ -69,15 +69,15 @@ namespace Starex.Controllers
 
         // PUT api/<CountryContactController>/5
         [HttpPut("{id}")]
-        public ActionResult Update(int id, [FromBody] CountryContact contact)
+        public async Task<ActionResult> Update(int id, [FromBody] CountryContact contact)
         {
             try
             {
-                CountryContact contactDb = _context.GetContactWithId(id);
+                CountryContact contactDb = await _context.GetWithId(id);
                 if (contactDb == null) return StatusCode(StatusCodes.Status404NotFound);
                 contactDb.Address = contact.Address;
                 contactDb.Time = contact.Time;
-                _context.Update(contactDb);
+                await _context.Update(contactDb);
                 return Ok();
             }
             catch (Exception e)
@@ -88,15 +88,15 @@ namespace Starex.Controllers
 
         // DELETE api/<CountryContactController>/5
         [HttpDelete("{id}")]
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
             try
             {
-                CountryContact countactDb = _context.GetContactWithId(id);
+                CountryContact countactDb = await _context.GetWithId(id);
                 if (countactDb == null) return StatusCode(StatusCodes.Status404NotFound);
                 countactDb.IsDeleted = true;
 
-                _context.Update(countactDb);
+                await _context.Update(countactDb);
                 return Ok();
             }
             catch (Exception e)

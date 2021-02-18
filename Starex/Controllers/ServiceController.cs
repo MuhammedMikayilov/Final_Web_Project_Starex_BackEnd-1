@@ -15,19 +15,19 @@ namespace Starex.Controllers
     [ApiController]
     public class ServiceController : ControllerBase
     {
-        private readonly IServiceService _context;
-        
+        private readonly IServiceService _serviceContext;
+
         public ServiceController(IServiceService serviceContext)
         {
-            _context = serviceContext;
+            _serviceContext = serviceContext;
         }
         // GET: api/<ServiceController>
         [HttpGet]
-        public ActionResult<List<Service>> Get()
+        public async Task<ActionResult<List<Service>>> Get()
         {
             try
             {
-                List<Service> services = _context.GetAllService();
+                List<Service> services = await _serviceContext.GetAll();
                 return Ok(services);
             }
             catch (Exception e)
@@ -38,11 +38,11 @@ namespace Starex.Controllers
 
         // GET api/<ServiceController>/5
         [HttpGet("{id}")]
-        public ActionResult<Service> Get(int id)
+        public async Task<ActionResult<Service>> Get(int id)
         {
             try
             {
-                Service service = _context.GetServiceWithId(id);
+                Service service = await _serviceContext.GetWithId(id);
                 if (service == null) return StatusCode(StatusCodes.Status404NotFound);
                 return Ok(service);
             }
@@ -54,13 +54,13 @@ namespace Starex.Controllers
 
         // POST api/<ServiceController>
         [HttpPost]
-        public ActionResult Create([FromBody] Service service)
+        public async Task<ActionResult> Create([FromBody] Service service)
         {
             try
             {
                 if (!ModelState.IsValid) return BadRequest();
 
-                _context.Add(service);
+                await _serviceContext.Add(service);
                 return Ok();
             }
             catch (Exception e)
@@ -71,43 +71,42 @@ namespace Starex.Controllers
 
         // PUT api/<ServiceController>/5
         [HttpPut("{id}")]
-        public ActionResult Update(int id, [FromBody] Service service)
+        public async Task<ActionResult> Update(int id, [FromBody] Service service)
         {
             try
             {
-                Service serviceDb = _context.GetServiceWithId(id);
+                Service serviceDb = await _serviceContext.GetWithId(id);
                 if (serviceDb == null) return StatusCode(StatusCodes.Status404NotFound);
 
                 serviceDb.Description = service.Description;
                 serviceDb.Title = service.Title;
                 serviceDb.VideoLink = service.VideoLink;
-                _context.Update(serviceDb);
+                await _serviceContext.Update(serviceDb);
                 return Ok();
             }
             catch (Exception e)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
             }
-            
         }
 
         // DELETE api/<ServiceController>/5
         [HttpDelete("{id}")]
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
             try
             {
-                Service serviceDb = _context.GetServiceWithId(id);
+                Service serviceDb = await _serviceContext.GetWithId(id);
                 if (serviceDb == null) return StatusCode(StatusCodes.Status404NotFound);
                 serviceDb.IsDeleted = true;
-                _context.Update(serviceDb);
+                await _serviceContext.Delete(id);
                 return Ok();
             }
             catch (Exception e)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
             }
-            
+
         }
     }
 }

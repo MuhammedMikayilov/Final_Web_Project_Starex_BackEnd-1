@@ -22,11 +22,11 @@ namespace Starex.Controllers
         }
         // GET: api/<TariffController>
         [HttpGet]
-        public ActionResult<List<Tariff>> Get()
+        public async Task<ActionResult<List<Tariff>>> Get()
         {
             try
             {
-                List<Tariff> tariffs = _context.GetAllTariff();
+                List<Tariff> tariffs = await _context.GetAll();
                 return Ok(tariffs);
             }
             catch (Exception e)
@@ -38,11 +38,11 @@ namespace Starex.Controllers
 
         // GET api/<TariffController>/5
         [HttpGet("{id}")]
-        public ActionResult<Tariff> Get(int id)
+        public async Task<ActionResult<Tariff>> Get(int id)
         {
             try
             {
-                Tariff tariffsDb = _context.GetTariffWithId(id);
+                Tariff tariffsDb = await _context.GetWithId(id);
                 if (tariffsDb == null) return StatusCode(StatusCodes.Status404NotFound);
                 return Ok(tariffsDb);
             }
@@ -54,12 +54,12 @@ namespace Starex.Controllers
 
         // POST api/<TariffController>
         [HttpPost]
-        public ActionResult Create([FromBody] Tariff tariff)
+        public async Task<ActionResult> Create([FromBody] Tariff tariff)
         {
             try
             {
                 if (!ModelState.IsValid) return BadRequest();
-                _context.Add(tariff);
+                await _context.Add(tariff);
                 return Ok();
             }
             catch (Exception e)
@@ -70,11 +70,11 @@ namespace Starex.Controllers
 
         // PUT api/<TariffController>/5
         [HttpPut("{id}")]
-        public ActionResult Update(int id, [FromBody] Tariff tariff)
+        public async Task<ActionResult> Update(int id, [FromBody] Tariff tariff)
         {
             try
             {
-                Tariff tariffDb = _context.GetTariffWithId(id);
+                Tariff tariffDb = await _context.GetWithId(id);
                 if (tariffDb == null) return StatusCode(StatusCodes.Status404NotFound);
 
                 tariffDb.EndWeight = tariff.EndWeight;
@@ -83,7 +83,7 @@ namespace Starex.Controllers
                 tariffDb.StartWeight = tariff.StartWeight;
                 tariffDb.Weight = tariff.Weight;
 
-                _context.Update(tariffDb);
+                await _context.Update(tariffDb);
                 return Ok();
             }
             catch (Exception e)
@@ -94,14 +94,14 @@ namespace Starex.Controllers
 
         // DELETE api/<TariffController>/5
         [HttpDelete("{id}")]
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
             try
             {
-                Tariff tariffDb = _context.GetTariffWithId(id);
+                Tariff tariffDb = await _context.GetWithId(id);
                 if (tariffDb == null) return StatusCode(StatusCodes.Status404NotFound);
                 tariffDb.IsDeleted = true;
-                _context.Update(tariffDb);
+                await _context.Update(tariffDb);
                 return Ok();
             }
             catch (Exception e)

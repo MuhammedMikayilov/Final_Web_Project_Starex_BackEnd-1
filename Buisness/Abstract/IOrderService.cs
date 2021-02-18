@@ -2,15 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Buisness.Abstract
 {
     public interface IOrderService
     {
-        Order GetWithId(int id);
-        List<Order> GetAll();
-        void Add(Order data);
-        void Update(Order data);
-        void Delete(int id);
+        Task<Order> GetWithId(int id);
+        Task<List<Order>> GetAll();
+        Task Add(Order data);
+        Task Update(Order data);
+        Task Delete(int id);
     }
 }

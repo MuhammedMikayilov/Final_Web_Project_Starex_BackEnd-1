@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -25,11 +26,11 @@ namespace Starex.Controllers
         }
         // GET: api/<BiosController>
         [HttpGet]
-        public ActionResult<List<Bio>> Get()
+        public async Task<ActionResult<List<Bio>>> Get()
         {
             try
             {
-                List<Bio> bio = _context.GetAll();
+                List<Bio> bio = await _context.GetAll();
                 return Ok(bio);
             }
             catch (Exception ex)
@@ -40,11 +41,11 @@ namespace Starex.Controllers
 
         // GET api/<BiosController>/5
         [HttpGet("{id}")]
-        public ActionResult<Bio> Get(int id)
+        public async Task<ActionResult<Bio>> Get(int id)
         {
             try
             {
-                Bio bio = _context.GetWithId(id);
+                Bio bio = await _context.GetWithId(id);
                 if (bio == null) return StatusCode(StatusCodes.Status404NotFound);
                 return Ok(bio);
             }
@@ -56,12 +57,12 @@ namespace Starex.Controllers
 
         // POST api/<BiosController>
         [HttpPost]
-        public ActionResult Post([FromBody] Bio bio)
+        public async Task<ActionResult> Post([FromBody] Bio bio)
         {
             try
             {
                 if (!ModelState.IsValid) return BadRequest();
-                _context.Add(bio);
+                await _context.Add(bio);
                 return Ok();
             }
             catch (Exception e)
@@ -72,22 +73,19 @@ namespace Starex.Controllers
 
         // PUT api/<BiosController>/5
         [HttpPut("{id}")]
-        public ActionResult Put(int id, [FromBody] Bio bio)
+        public async Task<ActionResult> Put(int id, [FromBody] Bio bio)
         {
             try
             {
-                Bio dbBio = _context.GetWithId(id);
-                if (dbBio == null) return BadRequest();
+                Bio dbBio = await _context.GetWithId(id);
+                if(dbBio == null) return BadRequest();
 
                 dbBio.Address = bio.Address;
                 dbBio.Contact = bio.Contact;
                 dbBio.WorkTime = bio.WorkTime;
 
                 //Will be image
-                if (bio.PhotoHeader == null)
-                {
-                    return BadRequest();
-                }
+                if (bio.PhotoHeader == null) return BadRequest();
 
                 return Ok();
 
@@ -100,13 +98,13 @@ namespace Starex.Controllers
 
         // DELETE api/<BiosController>/5
         [HttpDelete("{id}")]
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
             try
             {
-                Bio dbBio = _context.GetWithId(id);
+                Bio dbBio = await _context.GetWithId(id);
                 if (dbBio == null) return BadRequest();
-                _context.Delete(id);
+                await _context.Delete(id);
                 return Ok();
             }
             catch (Exception e)

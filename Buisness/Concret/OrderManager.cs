@@ -4,6 +4,7 @@ using Entity.Entities.Orders;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Buisness.Concret
 {
@@ -14,29 +15,30 @@ namespace Buisness.Concret
         {
             _orderDal = orderDal;
         }
-        public void Add(Order data)
+
+        async Task IOrderService.Add(Order data)
         {
-            _orderDal.Add(data);
+           await _orderDal.Add(data);
         }
 
-        public void Delete(int id)
+        async Task IOrderService.Delete(int id)
         {
-            _orderDal.Delete(new Order { Id = id });
+           await _orderDal.Delete(new Order { Id = id });
         }
 
-        public List<Order> GetAll()
+        public async Task<List<Order>> GetAll()
         {
-            return _orderDal.GetAll(o=>!o.IsDeleted);
+            return await _orderDal.GetAll(o => !o.IsDeleted);
         }
 
-        public Order GetWithId(int id)
+        public async Task<Order> GetWithId(int id)
         {
-            return _orderDal.Get(o=>o.Id == id && !o.IsDeleted);
+            return await _orderDal.Get(o => o.Id == id && !o.IsDeleted);
         }
 
-        public void Update(Order data)
+        async Task IOrderService.Update(Order data)
         {
-            _orderDal.Update(data);
+           await _orderDal.Update(data);
         }
     }
 }
