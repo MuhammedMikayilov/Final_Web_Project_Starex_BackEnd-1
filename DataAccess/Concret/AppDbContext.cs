@@ -3,6 +3,7 @@ using Entity.Entities.Contacts;
 using Entity.Entities.Countries;
 using Entity.Entities.HomePages;
 using Entity.Entities.Newss;
+using Entity.Entities.Notfications;
 using Entity.Entities.Orders;
 using Entity.Entities.Questions;
 using Entity.Entities.Service;
@@ -37,6 +38,7 @@ namespace DataAccess.Concret
         public DbSet<CountryContact> CountryContacts { get; set; }
         public DbSet<Store> Stores { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Notfication> Notfications { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

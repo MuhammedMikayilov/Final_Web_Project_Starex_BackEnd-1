@@ -51,6 +51,8 @@ namespace Starex
             services.AddScoped<ITariffDal, EFTariffDal>();
             services.AddScoped<IOrderService, OrderManager>();
             services.AddScoped<IOrderDal, EFOrderDal>();
+            services.AddScoped<INotficationService, NotficationManager>();
+            services.AddScoped<INotficationDal, EFNotficationDal>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
