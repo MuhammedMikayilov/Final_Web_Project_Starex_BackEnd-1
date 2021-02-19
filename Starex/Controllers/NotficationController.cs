@@ -62,6 +62,7 @@ namespace Starex.Controllers
             try
             {
                 if (!ModelState.IsValid) return BadRequest();
+                notfication.Date = DateTime.Now;
                 await _context.Add(notfication);
                 return Ok();
             }
@@ -79,19 +80,16 @@ namespace Starex.Controllers
             {
                 Notfication dbNotfication = await _context.GetWithId(id);
                 if (dbNotfication == null) return BadRequest();
-
+                
                 dbNotfication.IsDeliver = notfication.IsDeliver;
                 dbNotfication.IsStartDeliver = notfication.IsStartDeliver;
                 dbNotfication.IsStored = notfication.IsStored;
-
-
-
+                
                 if (!dbNotfication.IsDeliver && !dbNotfication.IsStartDeliver && !dbNotfication.IsStored)
                     dbNotfication.IsStartDeliver = true;
-
-                   await _context.Update(dbNotfication);
+ 
+                await _context.Update(dbNotfication);
                 return Ok();
-
             }
             catch (Exception e)
             {

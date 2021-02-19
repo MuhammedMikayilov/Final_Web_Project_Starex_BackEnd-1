@@ -21,6 +21,14 @@
     <Compile Remove="Migrations\20210217070631_StoreDb.Designer.cs" />
     <Compile Remove="Migrations\20210217143501_OrderDb.cs" />
     <Compile Remove="Migrations\20210217143501_OrderDb.Designer.cs" />
+    <Compile Remove="Migrations\20210218114609_Address.cs" />
+    <Compile Remove="Migrations\20210218114609_Address.Designer.cs" />
+    <Compile Remove="Migrations\20210219060345_Balance.cs" />
+    <Compile Remove="Migrations\20210219060345_Balance.Designer.cs" />
+    <Compile Remove="Migrations\20210219061054_Balance.cs" />
+    <Compile Remove="Migrations\20210219061054_Balance.Designer.cs" />
+    <Compile Remove="Migrations\20210219061629_Balance.cs" />
+    <Compile Remove="Migrations\20210219061629_Balance.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
