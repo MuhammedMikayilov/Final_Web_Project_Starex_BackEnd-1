@@ -11,11 +11,11 @@ namespace Entity.Entities.Balancess
     {
         public int Id { get; set; }
         [Required]
-        public double Price { get; set; }
+        public double? Price { get; set; }
         [Required]
         public string Currency { get; set; }
         [Required]
-        public double MyBalance{ get; set; }
+        public double? MyBalance{ get; set; }
 
     }
 }

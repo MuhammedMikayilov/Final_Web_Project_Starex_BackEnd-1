@@ -86,6 +86,9 @@ namespace Starex.Controllers
                 dbOrder.Price = order.Price;
                 dbOrder.Size = order.Size;
                 dbOrder.Total = order.Total;
+                dbOrder.IsPayment = order.IsPayment;
+                dbOrder.IsRejected = order.IsRejected;
+                dbOrder.IsAccepted = order.IsAccepted;
 
                 await _context.Update(dbOrder);
 

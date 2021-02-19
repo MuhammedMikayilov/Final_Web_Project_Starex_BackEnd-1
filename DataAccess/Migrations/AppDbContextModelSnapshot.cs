@@ -79,6 +79,109 @@ namespace DataAccess.Migrations
                     b.ToTable("Addresses");
                 });
 
+            modelBuilder.Entity("Entity.Entities.Balancess.Balance", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Currency")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double?>("MyBalance")
+                        .IsRequired()
+                        .HasColumnType("float");
+
+                    b.Property<double?>("Price")
+                        .IsRequired()
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Balances");
+                });
+
+            modelBuilder.Entity("Entity.Entities.Branches.Branch", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CityId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityId");
+
+                    b.ToTable("Branches");
+                });
+
+            modelBuilder.Entity("Entity.Entities.Cities.City", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cities");
+                });
+
+            modelBuilder.Entity("Entity.Entities.Contacts.BranchContact", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("BranchId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Map")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Time")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BranchId");
+
+                    b.ToTable("BranchContacts");
+                });
+
             modelBuilder.Entity("Entity.Entities.Contacts.CountryContact", b =>
                 {
                     b.Property<int>("Id")
@@ -398,6 +501,33 @@ namespace DataAccess.Migrations
                     b.ToTable("Services");
                 });
 
+            modelBuilder.Entity("Entity.Entities.Tariffs.DistrictTariff", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BranchId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("District")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BranchId");
+
+                    b.ToTable("DistrictTariffs");
+                });
+
             modelBuilder.Entity("Entity.Entities.Tariffs.Tariff", b =>
                 {
                     b.Property<int>("Id")
@@ -434,6 +564,24 @@ namespace DataAccess.Migrations
                     b.ToTable("Tariffs");
                 });
 
+            modelBuilder.Entity("Entity.Entities.Branches.Branch", b =>
+                {
+                    b.HasOne("Entity.Entities.Cities.City", "City")
+                        .WithMany("Branches")
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Entity.Entities.Contacts.BranchContact", b =>
+                {
+                    b.HasOne("Entity.Entities.Branches.Branch", "Branch")
+                        .WithMany("BranchContacts")
+                        .HasForeignKey("BranchId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Entity.Entities.Contacts.CountryContact", b =>
                 {
                     b.HasOne("Entity.Entities.Countries.Country", "Country")
@@ -457,6 +605,15 @@ namespace DataAccess.Migrations
                     b.HasOne("Entity.Entities.Questions.QuestionNavbar", "QuestionNavbar")
                         .WithMany("Questions")
                         .HasForeignKey("QuestionNavbarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Entity.Entities.Tariffs.DistrictTariff", b =>
+                {
+                    b.HasOne("Entity.Entities.Branches.Branch", "Branch")
+                        .WithMany("DistrictTariffs")
+                        .HasForeignKey("BranchId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

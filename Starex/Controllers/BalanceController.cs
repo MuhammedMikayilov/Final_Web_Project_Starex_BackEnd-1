@@ -60,6 +60,10 @@ namespace Starex.Controllers
             try
             {
                 if (!ModelState.IsValid) return BadRequest();
+
+                if (balance.Price == null) balance.Price = 0;
+                if (balance.MyBalance == null) balance.MyBalance = 0;
+
                 await _context.Add(balance);
                 return Ok();
             }
@@ -82,8 +86,11 @@ namespace Starex.Controllers
                 dbBalance.Price = balance.Price;
                 dbBalance.MyBalance = balance.MyBalance;
 
-                if(dbBalance.MyBalance >= balance.Price)
-                    dbBalance.MyBalance -= balance.Price;
+                if (balance.MyBalance == null) balance.MyBalance = balance.MyBalance;
+                if (balance.Price == null) balance.Price = balance.Price;
+
+
+                dbBalance.MyBalance += balance.Price;
 
                 await _context.Update(dbBalance);
                 return Ok();

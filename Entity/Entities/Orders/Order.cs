@@ -17,9 +17,9 @@ namespace Entity.Entities.Orders
         public double CargoCountry { get; set; }
         public string DeclarationLink { get; set; }
         public double Total { get; set; }
-        public bool İsPayment { get; set; }
-        public bool İsAccepted { get; set; }
-        public bool İsRejected { get; set; }
+        public bool IsPayment { get; set; }
+        public bool IsAccepted { get; set; }
+        public bool IsRejected { get; set; }
         public bool IsDeleted { get; set; }
     }
 }

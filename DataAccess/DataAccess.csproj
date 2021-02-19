@@ -17,18 +17,36 @@
     <Compile Remove="Migrations\20210216051145_First.Designer.cs" />
     <Compile Remove="Migrations\20210216135953_Test.cs" />
     <Compile Remove="Migrations\20210216135953_Test.Designer.cs" />
+    <Compile Remove="Migrations\20210216140225_Test.cs" />
+    <Compile Remove="Migrations\20210216140225_Test.Designer.cs" />
     <Compile Remove="Migrations\20210217070631_StoreDb.cs" />
     <Compile Remove="Migrations\20210217070631_StoreDb.Designer.cs" />
+    <Compile Remove="Migrations\20210217074755_StoreDb.cs" />
+    <Compile Remove="Migrations\20210217074755_StoreDb.Designer.cs" />
     <Compile Remove="Migrations\20210217143501_OrderDb.cs" />
     <Compile Remove="Migrations\20210217143501_OrderDb.Designer.cs" />
+    <Compile Remove="Migrations\20210217143548_OrderDb.cs" />
+    <Compile Remove="Migrations\20210217143548_OrderDb.Designer.cs" />
+    <Compile Remove="Migrations\20210218052238_Notfication.cs" />
+    <Compile Remove="Migrations\20210218052238_Notfication.Designer.cs" />
     <Compile Remove="Migrations\20210218114609_Address.cs" />
     <Compile Remove="Migrations\20210218114609_Address.Designer.cs" />
+    <Compile Remove="Migrations\20210218114701_Address.cs" />
+    <Compile Remove="Migrations\20210218114701_Address.Designer.cs" />
+    <Compile Remove="Migrations\20210218115749_NotficationAndOrder.cs" />
+    <Compile Remove="Migrations\20210218115749_NotficationAndOrder.Designer.cs" />
     <Compile Remove="Migrations\20210219060345_Balance.cs" />
     <Compile Remove="Migrations\20210219060345_Balance.Designer.cs" />
     <Compile Remove="Migrations\20210219061054_Balance.cs" />
     <Compile Remove="Migrations\20210219061054_Balance.Designer.cs" />
     <Compile Remove="Migrations\20210219061629_Balance.cs" />
     <Compile Remove="Migrations\20210219061629_Balance.Designer.cs" />
+    <Compile Remove="Migrations\20210219070647_Balance.cs" />
+    <Compile Remove="Migrations\20210219070647_Balance.Designer.cs" />
+    <Compile Remove="Migrations\20210219072954_AllTable.cs" />
+    <Compile Remove="Migrations\20210219072954_AllTable.Designer.cs" />
+    <Compile Remove="Migrations\20210219075352_ChangeBalance.cs" />
+    <Compile Remove="Migrations\20210219075352_ChangeBalance.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,6 +61,10 @@
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
     <ProjectReference Include="..\Entity\Entity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>
